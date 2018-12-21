@@ -149,10 +149,10 @@ module Portal
 
       profiles = []
       run_and_handle_portal_function { profiles = Spaceship::Portal.provisioning_profile.all(mac: false, xcode: xcode_managed) }
-      # Log.debug("all profiles (#{profiles.length}):")
-      # profiles.each do |profile|
-      #   Log.debug("#{profile.name}")
-      # end
+      Log.debug("all profiles (#{profiles.length}):")
+      profiles.each do |profile|
+        Log.debug("#{profile.name}")
+      end
 
       # filter for sub_platform
       profiles = profiles.reject do |profile|
@@ -162,10 +162,10 @@ module Portal
           profile.sub_platform.to_s.casecmp('tvos').zero?
         end
       end
-      # Log.debug("subplatform #{platform} profiles (#{profiles.length}):")
-      # profiles.each do |profile|
-      #   Log.debug("#{profile.name}")
-      # end
+      Log.debug("subplatform #{platform} profiles (#{profiles.length}):")
+      profiles.each do |profile|
+        Log.debug("#{profile.name}")
+      end
 
       # filter for type
       distribution_types = {
@@ -177,10 +177,10 @@ module Portal
       profiles = profiles.select do |profile|
         profile.distribution_method == distribution_types[distribution_type]
       end
-      # Log.debug("#{distribution_type} profiles (#{profiles.length}):")
-      # profiles.each do |profile|
-      #   Log.debug("#{profile.name}")
-      # end
+      Log.debug("#{distribution_type} profiles (#{profiles.length}):")
+      profiles.each do |profile|
+        Log.debug("#{profile.name}")
+      end
 
       platform_profiles = @profiles[platform].to_h
       managed_profiles = platform_profiles[xcode_managed].to_h
