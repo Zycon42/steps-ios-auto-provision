@@ -164,7 +164,7 @@ module Portal
       end
       Log.debug("subplatform #{platform} profiles (#{profiles.length}):")
       profiles.each do |profile|
-        Log.debug("#{profile.name}")
+        Log.debug("#{profile.name} - #{profile.distribution_method}")
       end
 
       # filter for type
